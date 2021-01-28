@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from einpos import repeat, rearrange
+from einops import repeat, rearrange
 
 class NMF(nn.Module):
     def __init__(self, input_dim, inner_dim, K=6):
@@ -21,7 +21,7 @@ class NMF(nn.Module):
 
 
 class KrabbyPatty(nn.Module):
-    def __init__(self, input_dim, n, inner_dim=None, K=6):
+    def __init__(self, input_dim, n, inner_dim=None, ratio=8, K=6):
         super().__init__()
         # check whether "breads" change the dimensions
         if inner_dim is None:
@@ -29,6 +29,7 @@ class KrabbyPatty(nn.Module):
         
         self.inner_dim = inner_dim
         self.K = K
+        self.r = self.inner_dim // ratio
 
         # There are no parameters in Ham
         self.lower_bread = nn.Linear(input_dim, inner_dim)
@@ -42,8 +43,15 @@ class KrabbyPatty(nn.Module):
         input_tensor = self.lower_bread(input_tensor)
         # Ham
         input_tensor = F.relu(input_tensor)
-        D = nn.init.uniform_(torch.zeros(input_length, self.inner_dim))
-        C = nn.init.uniform_(torch.zeros(self.inner_dim, hidden_dim))
+        D = nn.init.uniform_(torch.zeros(input_length, self.r))
+        C = nn.init.uniform_(torch.zeros(self.r, self.inner_dim))
+
+        for i in range(self.K):
+            if i == self.K - 1:
+                pass
+            else:
+                with torch.no_grad():
+                    pass
 
 
         input_tensor = self.upper_bread(input_tensor)
