@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from einpos import repeat, rearrange
 
 class NMF(nn.Module):
     def __init__(self, input_dim, inner_dim, K=6):
