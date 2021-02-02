@@ -6,7 +6,7 @@ from einops import repeat, rearrange
 
 
 class KrabbyPatty(nn.Module):
-    def __init__(self, input_dim, n, inner_dim=None, ratio=8, K=6, eps=1e-9):
+    def __init__(self, input_dim, inner_dim=None, ratio=8, K=6, eps=1e-9):
         super().__init__()
         # check whether "breads" change the dimensions
         if inner_dim is None:
