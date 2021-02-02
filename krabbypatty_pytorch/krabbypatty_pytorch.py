@@ -18,8 +18,8 @@ class KrabbyPatty(nn.Module):
         self.eps = eps
 
         # There are no parameters in Ham
-        self.lower_bread = nn.Linear(input_dim, inner_dim)
-        self.upper_bread = nn.Linear(inner_dim, input_dim)
+        self.lower_bread = nn.Linear(input_dim, self.inner_dim)
+        self.upper_bread = nn.Linear(self.inner_dim, input_dim)
     
 
     def forward(self, input_tensor):
