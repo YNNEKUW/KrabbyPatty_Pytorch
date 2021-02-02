@@ -31,9 +31,9 @@ class KrabbyPatty(nn.Module):
         # Ham
         X = F.relu(X)
         
-
-        D = nn.init.uniform_(torch.zeros(input_length, self.r))
-        C = nn.init.uniform_(torch.zeros(self.r, self.inner_dim))
+        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        D = nn.init.uniform_(torch.zeros(input_length, self.r, device=device))
+        C = nn.init.uniform_(torch.zeros(self.r, self.inner_dim, device=device))
         D = repeat(D, 'l r -> b l r', b = batch_size)
         C = repeat(C, 'r d -> b r d', b = batch_size)
 
