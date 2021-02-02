@@ -31,7 +31,9 @@ class KrabbyPatty(nn.Module):
         # Ham
         X = F.relu(X)
         
+        # check the device type
         device = next(self.lower_bread.parameters()).device
+        
         D = nn.init.uniform_(torch.zeros(input_length, self.r, device=device))
         C = nn.init.uniform_(torch.zeros(self.r, self.inner_dim, device=device))
         D = repeat(D, 'l r -> b l r', b = batch_size)
