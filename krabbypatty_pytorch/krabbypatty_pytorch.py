@@ -26,7 +26,7 @@ class KrabbyPatty(nn.Module):
         input_length, batch_size, hidden_dim = input_tensor.shape
         # X = input_tensor.flatten(2)
 
-        X = rearrange(X, 'l b d -> b l d')
+        X = rearrange(input_tensor, 'l b d -> b l d')
         X = self.lower_bread(X)
         # Ham
         X = F.relu(X)
