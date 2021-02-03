@@ -36,8 +36,8 @@ class KrabbyPatty(nn.Module):
         
         D = nn.init.uniform_(torch.zeros(input_length, self.r, device=device))
         C = nn.init.uniform_(torch.zeros(self.r, self.inner_dim, device=device))
-        D = repeat(D, 'l r -> b l r', b = batch_size)
-        C = repeat(C, 'r d -> b r d', b = batch_size)
+        D = repeat(D, 'l r -> b l r', b=batch_size)
+        C = repeat(C, 'r d -> b r d', b=batch_size)
 
         # Transpose for batch
         def t_b(t): return rearrange(t, 'b i j -> b j i')
