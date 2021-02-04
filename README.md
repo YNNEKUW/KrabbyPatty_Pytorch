@@ -1,5 +1,7 @@
 # KrabbyPatty_Pytorch
 
+<img src="./NMF.png"></img>
+
 ## Introduction
 ICLR 2021 paper <a href="https://openreview.net/forum?id=1FvkSpWosOl">Is Attention Better Than Matrix Decomposition?</a> Pytorch implementation. I haved tested this on IWSLT for the correctness and the efficacy. The hamburger-pytorch is not correct.
 
