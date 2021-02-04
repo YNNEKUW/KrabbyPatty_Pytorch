@@ -1,4 +1,4 @@
-# KrabbyPatty_Pytorch
+# KrabbyPatty_Pytorch 🍔
 
 <img src="./NMF.png"></img>
 
